@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class GoPanel extends JPanel {
-
+	
 	BufferedImage image;
 	List<Piece> piecesList = new ArrayList<>();
 
@@ -36,6 +36,7 @@ public class GoPanel extends JPanel {
 		for (Piece piece : piecesList) {
 			piece.draw(g);
 		}
+		
 	}
 
 	/**
@@ -53,10 +54,9 @@ public class GoPanel extends JPanel {
 			super.mouseClicked(e);
 			int x = e.getX();
 			int y = e.getY();
-//			int px = (x - (x - 15) / 30 * 30 - 15) > 13 ? ((x - 15) / 30 * 30 + 15 + 26) : ((x - 15) / 30 * 30 + 15);
-//			int py = (y - (y - 15) / 30 * 30 - 15) > 13 ? ((y - 15) / 30 * 30 + 15 + 26) : ((y - 15) / 30 * 30 + 15);
-			Piece piece = new Piece(x, y);
-			System.out.println(piece.toString());
+			int px = (x - (x - 15) / 26 * 26 - 15) > 13 ? ((x - 15) / 26 + 1) * 26 + 15 - 10: ((x - 15) / 26 * 26 + 15) - 10;
+			int py = (y - (y - 15) / 26 * 26 - 15) > 13 ? ((y - 15) / 26 + 1) * 26 + 15 - 10: ((y - 15) / 26 * 26 + 15) - 10;
+			Piece piece = new Piece(px, py);
 			if (!piecesList.contains(piece)) {
 				piece.setWhite(isWhite);
 				piecesList.add(piece);
