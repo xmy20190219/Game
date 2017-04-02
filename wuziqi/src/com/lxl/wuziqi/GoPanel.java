@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class GoPanel extends JPanel {
 	
 	BufferedImage image;
-	List<Piece> piecesList = new ArrayList<>();
+	ArrayList<Piece> piecesList = new ArrayList<>();
 
 	public GoPanel() {
 		try {
@@ -52,15 +52,24 @@ public class GoPanel extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			super.mouseClicked(e);
+			//判断输赢
+//			PieceHandle.whoWin();
 			int x = e.getX();
 			int y = e.getY();
 			int px = (x - (x - 15) / 26 * 26 - 15) > 13 ? ((x - 15) / 26 + 1) * 26 + 15 - 10: ((x - 15) / 26 * 26 + 15) - 10;
 			int py = (y - (y - 15) / 26 * 26 - 15) > 13 ? ((y - 15) / 26 + 1) * 26 + 15 - 10: ((y - 15) / 26 * 26 + 15) - 10;
 			Piece piece = new Piece(px, py);
 			if (!piecesList.contains(piece)) {
+				//人落子
 				piece.setWhite(isWhite);
 				piecesList.add(piece);
-				isWhite = !isWhite;
+//				isWhite = !isWhite;
+				/**
+				 * TODO:机器落子
+				 * 1、找出人落子的最长路径
+				 * 2、堵住这个路径
+				 */
+				PieceHandle.getNextPoint(piecesList);
 			}
 			// 重绘
 			repaint();
