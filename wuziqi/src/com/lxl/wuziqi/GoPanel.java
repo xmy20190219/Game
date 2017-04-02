@@ -69,6 +69,11 @@ public class GoPanel extends JPanel {
 				 * 1、找出人落子的最长路径
 				 * 2、堵住这个路径
 				 */
+				System.out.print("棋盘上所有棋子\t");
+				for (int i = 0; i < piecesList.size(); i++) {
+					System.out.print("<" + piecesList.get(i).getX() + "," + piecesList.get(i).getY() + ">\t");
+				}
+				System.out.println();
 				PieceHandle.getNextPoint(piecesList);
 			}
 			// 重绘
